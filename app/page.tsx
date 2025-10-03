@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import Hero from "@/components/home/hero";
 import AboutUs from "@/components/about-us";
 import Services from "@/components/services";
@@ -220,7 +222,18 @@ export default function Home() {
         <Contact />
       </div>
 
-
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-[9999]">
+        <Link
+          href="https://wa.me/923320900992?text=Hello%20I%20want%20to%20know%20more%20about%20your%20marketplace%20services!"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110 animate-pulse hover:animate-none"
+          aria-label="Contact us on WhatsApp"
+        >
+          <FaWhatsapp className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" />
+        </Link>
+      </div>
     </div>
   );
 }

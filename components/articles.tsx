@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar, Clock, ArrowRight, User } from "lucide-react"
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, ArrowRight, User } from "lucide-react";
 
 export default function Articles() {
   const articles = [
@@ -69,7 +69,7 @@ export default function Articles() {
       category: "Blockchain",
       image: "/blockchain-network.png",
     },
-  ]
+  ];
 
   return (
     <section className="py-24 relative">
@@ -81,17 +81,17 @@ export default function Articles() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
             <span className="text-primary neon-text">Insights</span> & Expertise
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Stay updated with the latest trends, best practices, and insights from our team of technology experts.
-            Discover how emerging technologies are shaping the future of business.
+            Stay updated with the latest trends, best practices, and insights
+            from our team of technology experts. Discover how emerging
+            technologies are shaping the future of business.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article, index) => (
             <motion.div
               key={index}
@@ -101,53 +101,62 @@ export default function Articles() {
               viewport={{ once: true }}
             >
               <Card
-                className={`h-full neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300 group overflow-hidden ${article.featured ? "ring-2 ring-primary/50" : ""}`}
+                className={`h-full neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300 group overflow-hidden ${
+                  article.featured ? "ring-2 ring-primary/50" : ""
+                }`}
               >
                 <div className="relative overflow-hidden">
                   <img
                     src={article.image || "/placeholder.svg"}
                     alt={article.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {article.featured && (
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-primary text-black">Featured</Badge>
+                    <div className="absolute top-3 left-3">
+                      <Badge className="bg-primary text-black text-xs">
+                        Featured
+                      </Badge>
                     </div>
                   )}
-                  <div className="absolute top-4 right-4">
-                    <Badge variant="secondary" className="bg-black/50 text-white backdrop-blur-sm">
+                  <div className="absolute top-3 right-3">
+                    <Badge
+                      variant="secondary"
+                      className="bg-black/50 text-white backdrop-blur-sm text-xs"
+                    >
                       {article.category}
                     </Badge>
                   </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
                     {article.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground text-sm line-clamp-3">{article.excerpt}</p>
+                <CardContent className="space-y-3 pt-0">
+                  <p className="text-muted-foreground text-xs line-clamp-3 leading-relaxed">
+                    {article.excerpt}
+                  </p>
 
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       <User className="h-3 w-3" />
                       <span>{article.author}</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       <Clock className="h-3 w-3" />
                       <span>{article.readTime}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <div className="flex items-center justify-between pt-3">
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                       <Calendar className="h-3 w-3" />
                       <span>{new Date(article.date).toLocaleDateString()}</span>
                     </div>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 group-hover:translate-x-1 transition-all duration-300"
+                      className="text-primary hover:text-primary hover:bg-primary/10 group-hover:translate-x-1 transition-all duration-300 h-7 text-xs"
                     >
                       Read More <ArrowRight className="ml-1 h-3 w-3" />
                     </Button>
@@ -171,5 +180,5 @@ export default function Articles() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

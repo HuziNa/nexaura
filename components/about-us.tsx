@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Zap, Target, Users, Award } from "lucide-react"
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Zap, Target, Users, Award } from "lucide-react";
 
 export default function AboutUs() {
   const values = [
     {
       icon: <Zap className="h-6 w-6" />,
-      title: "Innovation First",
+      title: "Marketplace Mastery",
       description:
-        "We push the boundaries of technology to deliver cutting-edge solutions that drive your business forward.",
+        "Deep expertise in Amazon, Walmart, eBay, and TikTok Shop algorithms, policies, and optimization strategies.",
     },
     {
       icon: <Target className="h-6 w-6" />,
-      title: "Precision Focused",
+      title: "Results Driven",
       description:
-        "Every project is executed with meticulous attention to detail and unwavering commitment to excellence.",
+        "Every campaign is optimized for maximum ROI with data-driven decisions that increase sales and profitability.",
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Client Centric",
+      title: "Brand Partnership",
       description:
-        "Your success is our mission. We build lasting partnerships through transparent communication and results.",
+        "We become an extension of your team, providing transparent communication and dedicated account management.",
     },
     {
       icon: <Award className="h-6 w-6" />,
-      title: "Quality Assured",
+      title: "Proven Success",
       description:
-        "We maintain the highest standards in every aspect of our work, from code quality to user experience.",
+        "Hundreds of successful product launches and millions in revenue generated across all major marketplaces.",
     },
-  ]
+  ];
 
   return (
     <section className="py-24 relative">
@@ -43,17 +43,20 @@ export default function AboutUs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            Shaping the <span className="text-primary neon-text">Digital Future</span>
+            Powering Your{" "}
+            <span className="text-primary neon-text">Marketplace Success</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Founded on the principle that technology should empower, not complicate, Nexura combines next-generation
-            innovation with an aura of simplicity. We transform complex challenges into elegant solutions.
+            Founded by ecommerce entrepreneurs who built and scaled their own
+            multi-million dollar marketplace businesses, Nexura specializes in
+            helping brands dominate Amazon, Walmart, eBay, and TikTok Shop. We
+            combine deep marketplace expertise with cutting-edge technology to
+            transform your products into profitable, scalable online businesses.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {values.map((value, index) => (
             <motion.div
               key={index}
@@ -63,18 +66,22 @@ export default function AboutUs() {
               viewport={{ once: true }}
             >
               <Card className="h-full neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="text-primary mb-4 flex justify-center">{value.icon}</div>
-                  <h3 className="text-lg font-semibold mb-3 text-foreground">{value.title}</h3>
-                  <p className="text-muted-foreground text-sm">{value.description}</p>
+                <CardContent className="p-4 text-center">
+                  <div className="text-primary mb-3 flex justify-center">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-base font-semibold mb-2 text-foreground">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground text-xs leading-relaxed">
+                    {value.description}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
-
-        
       </div>
     </section>
-  )
+  );
 }
