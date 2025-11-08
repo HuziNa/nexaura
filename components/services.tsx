@@ -2,17 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
-  Brain,
-  Cloud,
-  Smartphone,
-  Globe,
-  Database,
-  Shield,
-  ArrowRight,
   Users,
   ShoppingBag,
   Megaphone,
@@ -20,8 +10,37 @@ import {
   Truck,
   BarChart3,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Services() {
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [equalHeight, setEqualHeight] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    const computeHeights = () => {
+      // Apply equal heights only on md and above to avoid tall cards on mobile
+      const isMdUp = window.matchMedia("(min-width: 768px)").matches;
+      if (!isMdUp) {
+        setEqualHeight(undefined);
+        return;
+      }
+      const heights = (cardRefs.current || []).map((el) =>
+        el ? el.getBoundingClientRect().height : 0
+      );
+      const max = heights.length ? Math.max(...heights) : undefined;
+      setEqualHeight(max && isFinite(max) ? Math.ceil(max) : undefined);
+    };
+
+    // Compute after mount
+    const id = window.setTimeout(computeHeights, 0);
+    // Recompute on resize
+    window.addEventListener("resize", computeHeights);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener("resize", computeHeights);
+    };
+  }, []);
+
   const services = [
     {
       icon: <Users className="h-8 w-8" />,
@@ -115,7 +134,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="py-24 relative">
+    <section className="pb-24 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -143,8 +162,15 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
+              ref={(el) => {
+                // store the wrapper element for height calculation
+                if (!cardRefs.current) return;
+                cardRefs.current[index] = el as HTMLDivElement | null;
+              }}
+              style={{ height: equalHeight ?? "auto" }}
+              className="flex"
             >
-              <Card className="h-full neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300 group flex flex-col">
+              <Card className="h-full w-full neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300 group flex flex-col">
                 <CardHeader className="pb-4">
                   <div
                     className={`w-12 h-12 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center text-black mb-3 group-hover:scale-110 transition-transform duration-300`}
@@ -170,15 +196,6 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
-                  <Link href={`/services/${service.slug}`}>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="w-full text-primary hover:text-primary hover:bg-primary/10 group-hover:translate-x-1 transition-all duration-300 mt-4"
-                    >
-                      Learn More <ArrowRight className="ml-2 h-3 w-3" />
-                    </Button>
-                  </Link>
                 </CardContent>
               </Card>
             </motion.div>

@@ -144,23 +144,7 @@ export default function Projects() {
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex gap-2 pt-3">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="flex-1 text-primary hover:text-primary hover:bg-primary/10 h-8 text-xs"
-                    >
-                      <ExternalLink className="mr-1.5 h-3 w-3" />
-                      View Live
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 h-8 w-8 p-0"
-                    >
-                      <Github className="h-3 w-3" />
-                    </Button>
-                  </div>
+                  {/* Removed View Live and GitHub buttons */}
                 </CardContent>
               </Card>
             </motion.div>

@@ -2,78 +2,38 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { useEffect, useState } from "react";
+// Removed social links and badges for a cleaner, professional layout
 
 export default function Team() {
+  const accents = [
+    "from-primary via-accent to-primary",
+    "from-accent via-primary to-accent",
+    "from-primary to-accent",
+  ];
   const teamMembers = [
     {
-      name: "Alex Chen",
+      name: "Ihsan",
       role: "Director Ecommerce",
-      bio: "Visionary leader with 15+ years in tech innovation and AI research.",
       image: "/ihsan.jpeg",
-      social: {
-        linkedin: "https://www.linkedin.com/in/esi363",
-        twitter: "#",
-        github: "#",
-      },
     },
     {
       name: "Jawad",
-      role: "CEO",
-      bio: "Full-stack architect specializing in scalable cloud solutions and DevOps.",
-      image: "/jawad.jpeg",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
+      role: "Co-Founder",
+      image: "/jawad hashmi.jpeg",
     },
     {
-      name: "Marcus Johnson",
-      role: "Lead AI Engineer",
-      bio: "Machine learning expert with expertise in computer vision and NLP.",
+      name: "Ammar",
+      role: "Co-Founder ",
       image: "/ai-engineer-headshot.png",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
+      
     },
     {
-      name: "Emily Zhang",
-      role: "Head of Design",
-      bio: "UX/UI designer creating intuitive experiences for complex technologies.",
-      image: "/ux-designer-headshot.png",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
+      name: "Usman",
+      role: "Director IT",
+      image: "/usman kocha.jpeg",
     },
-    {
-      name: "David Kumar",
-      role: "Security Architect",
-      bio: "Cybersecurity specialist ensuring robust protection for all solutions.",
-      image: "/security-expert-headshot.png",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
-    },
-    {
-      name: "Lisa Park",
-      role: "Data Scientist",
-      bio: "Analytics expert transforming data into actionable business insights.",
-      image: "/data-scientist-headshot.png",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-      },
-    },
+    
   ];
 
   return (
@@ -96,7 +56,7 @@ export default function Team() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
@@ -105,63 +65,54 @@ export default function Team() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-[28rem] neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300 group flex flex-col">
-                <CardContent className="p-5 text-center flex flex-col h-full">
-                  <div className="relative mb-4">
-                    <img
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      className="w-32 h-32 rounded-full mx-auto object-cover neon-border group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <Card className="relative overflow-hidden border border-border/60 bg-card/60 backdrop-blur-xl transition-all duration-300 group flex flex-col hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
+                {/* soft glow aura */}
+                <div
+                  className="pointer-events-none absolute -inset-20 opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-500"
+                  style={{
+                    background:
+                      "radial-gradient(50% 50% at 50% 50%, hsl(var(--primary)/.25) 0%, transparent 60%)",
+                  }}
+                />
+                <CardContent className="p-7 text-center flex flex-col items-center">
+                  {/* avatar with gradient ring */}
+                  <div
+                    className={`relative mb-6 p-[3px] rounded-full bg-gradient-to-tr ${
+                      accents[index % accents.length]
+                    } shadow-[0_0_0_3px_hsl(var(--background))]`}
+                  >
+                    <div className="rounded-full bg-background p-[2px]">
+                      {(() => {
+                        // Determine columns responsively (1, 2, or 3)
+                        const [cols, setCols] = (function useCols() {
+                          // Inline hook pattern to avoid moving a lot of code; evaluated per render
+                          // but React hooks must be top-level; instead, we'll compute outside below.
+                          return [1, () => {}] as const;
+                        })();
+                        return null;
+                      })()}
+                      {/* The actual image element is rendered below using computed values */}
+                      <TeamAvatar
+                        index={index}
+                        total={teamMembers.length}
+                        src={member.image}
+                        alt={member.name}
+                      />
+                    </div>
+                    {/* ring highlight */}
+                    <div className="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-1 text-foreground">
+
+                  {/* name */}
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
                     {member.name}
                   </h3>
-                  <Badge
-                    variant="secondary"
-                    className="mb-3 bg-primary/20 text-primary text-xs"
-                  >
+                  {/* decorative underline */}
+                  <div className="mt-2 mb-2 h-px w-14 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+                  {/* role */}
+                  <p className="text-xs md:text-sm text-primary/80 bg-primary/10 px-3 py-1 rounded-full">
                     {member.role}
-                  </Badge>
-                  <p className="text-muted-foreground text-xs mb-4 leading-relaxed flex-grow">
-                    {member.bio}
                   </p>
-                  <div className="flex justify-center space-x-2 mt-auto">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 h-8 w-8 p-0"
-                      onClick={() =>
-                        member.social.linkedin !== "#" &&
-                        window.open(member.social.linkedin, "_blank")
-                      }
-                    >
-                      <Linkedin className="h-3 w-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 h-8 w-8 p-0"
-                      onClick={() =>
-                        member.social.twitter !== "#" &&
-                        window.open(member.social.twitter, "_blank")
-                      }
-                    >
-                      <Twitter className="h-3 w-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 h-8 w-8 p-0"
-                      onClick={() =>
-                        member.social.github !== "#" &&
-                        window.open(member.social.github, "_blank")
-                      }
-                    >
-                      <Github className="h-3 w-3" />
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -169,5 +120,43 @@ export default function Team() {
         </div>
       </div>
     </section>
+  );
+}
+
+type AvatarProps = { index: number; total: number; src?: string; alt: string };
+
+function TeamAvatar({ index, total, src, alt }: AvatarProps) {
+  // Determine how many columns are currently active to identify the bottom row
+  const [cols, setCols] = useState(1);
+
+  useEffect(() => {
+    const compute = () => {
+      if (typeof window === "undefined") return;
+      const lg = window.matchMedia("(min-width: 1024px)").matches;
+      const md = window.matchMedia("(min-width: 768px)").matches;
+      setCols(lg ? 3 : md ? 2 : 1);
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  const bottomRowStart = Math.max(0, total - cols);
+  const isBottomRow = index >= bottomRowStart;
+  const placeholder = "/avatar-placeholder.svg";
+  const srcToUse = isBottomRow ? placeholder : src || placeholder;
+
+  return (
+    <img
+      src={srcToUse}
+      alt={alt}
+      className="w-40 h-40 md:w-44 md:h-44 rounded-full object-cover shadow-lg"
+      onError={(e) => {
+        const img = e.currentTarget as HTMLImageElement;
+        if (img.src !== window.location.origin + placeholder) {
+          img.src = placeholder;
+        }
+      }}
+    />
   );
 }

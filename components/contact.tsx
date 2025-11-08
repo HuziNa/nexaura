@@ -112,22 +112,22 @@ export default function Contact() {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email Us",
-      details: "hello@nexura.tech",
+      details: "company@nexurasolution.com",
       description: "Get in touch for project inquiries",
       copyable: true,
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
+      details: "0332 0900992",
       description: "Speak directly with our team",
       copyable: true,
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Visit Us",
-      details: "San Francisco, CA",
-      description: "Innovation Hub, Silicon Valley",
+      details: "Office # 2, Trafalgar Square, New Metro City, Sarai Alamgir",
+      description: "",
       copyable: false,
     },
     {
@@ -151,7 +151,7 @@ export default function Contact() {
   ];
 
   return (
-    <section className="py-24 relative">
+    <section className="pb-24 pt-10 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

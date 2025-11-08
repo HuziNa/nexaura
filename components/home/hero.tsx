@@ -279,43 +279,24 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-8"
+              className="mb-8 flex flex-col items-center justify-center"
             >
-              <h1
-                id="main-title"
-                className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
-              >
-                Welcome to{" "}
-                <strong className="text-primary neon-text">NEXURA</strong>{" "}
-                <br />
-                <span className="text-muted-foreground">Where</span>{" "}
-                <strong className="text-accent">Future</strong>{" "}
-                <em className="italic text-primary">Meets Innovation</em>
-              </h1>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col items-center gap-6 pt-6"
-            >
-              <div className="flex items-center justify-center">
-                <a href="#contact">
-                  <div className="group cursor-pointer neon-border bg-card gap-2 h-[60px] flex items-center p-[10px] rounded-full hover:neon-glow transition-all duration-300">
-                    <div className="bg-gradient-to-r from-primary to-accent h-[40px] rounded-full flex items-center justify-center text-black neon-glow">
-                      <p className="font-medium tracking-tight mr-3 ml-3 flex items-center gap-2 justify-center text-base">
-                        <Sparkles className="h-4 w-4" />
-                        Start Your Journey
-                      </p>
-                    </div>
-                    <div className="text-primary group-hover:ml-4 ease-in-out transition-all size-[24px] flex items-center justify-center rounded-full border-2 neon-border">
-                      <ArrowRight className="h-3 w-3 group-hover:rotate-180 ease-in-out transition-all" />
-                    </div>
-                  </div>
-                </a>
+              <div className="relative flex items-center justify-center mb-4">
+                <img
+                  src="/nexura-removebg-preview.png"
+                  alt="Nexura N Logo"
+                  className="w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 animate-float-slow drop-shadow-xl select-none pointer-events-none"
+                  style={{
+                    filter: "drop-shadow(0 8px 32px rgba(0,212,255,0.18))",
+                  }}
+                />
+              </div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-primary neon-text mb-2">
+                One Nexus. Endless Solutions
               </div>
             </motion.div>
+
+           
           </div>
         </div>
       </section>

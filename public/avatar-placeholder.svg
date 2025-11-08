@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38f9d7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <clipPath id="clip">
+      <circle cx="128" cy="128" r="124"/>
+    </clipPath>
+  </defs>
+  <rect width="256" height="256" rx="128" fill="url(#g)"/>
+  <g clip-path="url(#clip)">
+    <circle cx="128" cy="104" r="56" fill="rgba(255,255,255,0.9)"/>
+    <path d="M128 172c-52 0-88 27-96 56a124 124 0 0 0 192 0c-8-29-44-56-96-56z" fill="rgba(255,255,255,0.9)"/>
+  </g>
+  <circle cx="128" cy="128" r="124" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4"/>
+</svg>

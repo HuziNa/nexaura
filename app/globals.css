@@ -172,15 +172,15 @@ body {
   max-width: 100vw;
 }
 
-/* Added custom text selection styling with orange background and dark text */
+/* Custom text selection styling with navy blue background and white text */
 ::selection {
-  background-color: #e78a53;
-  color: #121113;
+  background-color: #1e40af;
+  color: #ffffff;
 }
 
 ::-moz-selection {
-  background-color: #e78a53;
-  color: #121113;
+  background-color: #1e40af;
+  color: #ffffff;
 }
 
 @layer base {

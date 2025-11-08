@@ -7,7 +7,6 @@ import AboutUs from "@/components/about-us";
 import Services from "@/components/services";
 import Team from "@/components/team";
 import Projects from "@/components/projects";
-import Articles from "@/components/articles";
 import Reviews from "@/components/reviews";
 import Contact from "@/components/contact";
 
@@ -53,7 +52,6 @@ export default function Home() {
     { name: "Services", id: "services" },
     { name: "Team", id: "team" },
     { name: "Projects", id: "projects" },
-    { name: "Articles", id: "articles" },
     { name: "Reviews", id: "reviews" },
     { name: "Contact", id: "contact" },
   ];
@@ -206,17 +204,13 @@ export default function Home() {
         <Team />
       </div>
 
-      <div id="projects">
+      {/* <div id="projects">
         <Projects />
-      </div>
+      </div> */}
 
-      <div id="articles">
-        <Articles />
-      </div>
-
-      <div id="reviews">
+      {/* <div id="reviews">
         <Reviews />
-      </div>
+      </div> */}
 
       <div id="contact">
         <Contact />
@@ -225,7 +219,7 @@ export default function Home() {
       {/* Floating WhatsApp Button */}
       <div className="fixed bottom-6 right-6 z-[9999]">
         <Link
-          href="https://wa.me/923320900992?text=Hello%20I%20want%20to%20know%20more%20about%20your%20marketplace%20services!"
+          href="https://wa.me/13862910027?text=Hello%20I%20want%20to%20know%20more%20about%20your%20marketplace%20services!"
           target="_blank"
           rel="noopener noreferrer"
           className="group bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110 animate-pulse hover:animate-none"
