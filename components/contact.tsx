@@ -142,7 +142,7 @@ export default function Contact() {
   const services = [
     "Ecommerce Solutions",
     "Web Development",
-    "SEO Optimization",
+    //"SEO Optimization",
     // "Digital Marketing",
     // "Payment Integration",
     "Mobile App Development",

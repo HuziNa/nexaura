@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
     const getRecipientEmail = (service: string) => {
       const serviceUpper = service.toUpperCase();
 
+      // Route ecommerce to ecommerce@
       if (
         serviceUpper.includes("ECOMMERCE") ||
         serviceUpper.includes("E-COMMERCE")
@@ -27,18 +28,17 @@ export async function POST(request: NextRequest) {
         return "ecommerce@nexurasolution.com";
       }
 
+      // Route web dev, mobile dev, cloud solutions, and analytics to it@
       if (
-        serviceUpper.includes("WEB DEVELOPMENT") ||
-        serviceUpper.includes("SEO") ||
-        serviceUpper.includes("DIGITAL MARKETING") ||
-        serviceUpper.includes("MOBILE APP") ||
-        serviceUpper.includes("CLOUD") ||
+        serviceUpper.includes("WEB DEV") ||
+        serviceUpper.includes("MOBILE DEV") ||
+        serviceUpper.includes("CLOUD SOL") ||
         serviceUpper.includes("ANALYTICS")
       ) {
         return "it@nexurasolution.com";
       }
 
-      // Default to info email
+      // Default to info email for any other services
       return "info@nexurasolution.com";
     };
 
