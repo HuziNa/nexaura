@@ -145,9 +145,9 @@ export default function Contact() {
     "SEO Optimization",
     // "Digital Marketing",
     // "Payment Integration",
-    // "Mobile App Development",
-    // "Cloud Solutions",
-    // "Analytics & Reporting",
+    "Mobile App Development",
+    "Cloud Solutions",
+    "Analytics & Reporting",
   ];
 
   return (
