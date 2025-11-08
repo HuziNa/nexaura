@@ -51,9 +51,6 @@ export default function Home() {
     { name: "About Us", id: "about" },
     { name: "Services", id: "services" },
     { name: "Team", id: "team" },
-    { name: "Projects", id: "projects" },
-    { name: "Reviews", id: "reviews" },
-    { name: "Contact", id: "contact" },
   ];
 
   return (
@@ -124,12 +121,26 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a
-            href="/signup"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById("contact");
+              if (element) {
+                const headerOffset = 120;
+                const elementPosition =
+                  element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth",
+                });
+              }
+            }}
             className="rounded-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center bg-gradient-to-r from-primary to-accent text-black neon-glow px-4 py-2 text-sm"
           >
-            Get Started
-          </a>
+            Contact Us
+          </button>
         </div>
       </header>
 
@@ -177,12 +188,12 @@ export default function Home() {
                 </button>
               ))}
               <div className="border-t border-border/50 pt-4 mt-4 flex flex-col space-y-3">
-                <a
-                  href="/signup"
+                <button
+                  onClick={() => handleMobileNavClick("contact")}
                   className="px-4 py-3 text-lg font-bold text-center bg-gradient-to-r from-primary to-accent text-black rounded-lg neon-glow hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Get Started
-                </a>
+                  Contact Us
+                </button>
               </div>
             </nav>
           </div>

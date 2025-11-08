@@ -5,9 +5,29 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "Nexura Solutions",
+  description: "One Nexus. Endless Solutions",
+  generator: "Nexura",
+  icons: {
+    icon: [
+      {
+        url: "/nexura-removebg-preview.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/nexura-removebg-preview.png",
+        sizes: "64x64",
+        type: "image/png",
+      },
+      {
+        url: "/nexura-removebg-preview.png",
+        sizes: "128x128",
+        type: "image/png",
+      },
+    ],
+    apple: "/nexura-removebg-preview.png",
+  },
 };
 
 export default function RootLayout({

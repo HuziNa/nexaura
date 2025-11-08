@@ -112,7 +112,7 @@ export default function Contact() {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email Us",
-      details: "company@nexurasolution.com",
+      details: "info@nexurasolution.com",
       description: "Get in touch for project inquiries",
       copyable: true,
     },
@@ -133,7 +133,7 @@ export default function Contact() {
     {
       icon: <Clock className="h-6 w-6" />,
       title: "Business Hours",
-      details: "Mon - Fri, 9AM - 6PM PST",
+      details: "Mon - Fri, 9AM - 6PM",
       description: "We're here when you need us",
       copyable: false,
     },
@@ -143,11 +143,11 @@ export default function Contact() {
     "Ecommerce Solutions",
     "Web Development",
     "SEO Optimization",
-    "Digital Marketing",
-    "Payment Integration",
-    "Mobile App Development",
-    "Cloud Solutions",
-    "Analytics & Reporting",
+    // "Digital Marketing",
+    // "Payment Integration",
+    // "Mobile App Development",
+    // "Cloud Solutions",
+    // "Analytics & Reporting",
   ];
 
   return (
@@ -165,9 +165,7 @@ export default function Contact() {
             <span className="text-primary neon-text">Future</span> Together
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Ready to transform your business with cutting-edge technology? Our
-            team of experts is here to help you navigate the digital landscape
-            and create solutions that drive real results.
+           Whether you’re an individual or a business, we provide smart IT and e-commerce services that turn your ideas into reality. From building your online presence to creating digital tools, we help you grow and achieve real financial results, delivering the ROI you expect from every investment.
           </p>
         </motion.div>
 
@@ -217,7 +215,7 @@ export default function Contact() {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        placeholder="John"
+                        placeholder="-"
                         className="neon-border bg-background/50"
                         required
                       />
@@ -230,7 +228,7 @@ export default function Contact() {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        placeholder="Doe"
+                        placeholder="-"
                         className="neon-border bg-background/50"
                         required
                       />
@@ -246,7 +244,7 @@ export default function Contact() {
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="john@company.com"
+                      placeholder="-"
                       className="neon-border bg-background/50"
                       required
                     />
@@ -254,13 +252,13 @@ export default function Contact() {
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
-                      Company
+                      Company (optional)
                     </label>
                     <Input
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      placeholder="Your Company"
+                      placeholder="-"
                       className="neon-border bg-background/50"
                     />
                   </div>

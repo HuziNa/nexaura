@@ -16,19 +16,49 @@ export async function POST(request: NextRequest) {
 
     const fullName = `${firstName}${lastName ? ` ${lastName}` : ""}`;
 
-    // Create transporter
+    // Determine recipient email based on service
+    const getRecipientEmail = (service: string) => {
+      const serviceUpper = service.toUpperCase();
+
+      if (
+        serviceUpper.includes("ECOMMERCE") ||
+        serviceUpper.includes("E-COMMERCE")
+      ) {
+        return "ecommerce@nexurasolution.com";
+      }
+
+      if (
+        serviceUpper.includes("WEB DEVELOPMENT") ||
+        serviceUpper.includes("SEO") ||
+        serviceUpper.includes("DIGITAL MARKETING") ||
+        serviceUpper.includes("MOBILE APP") ||
+        serviceUpper.includes("CLOUD") ||
+        serviceUpper.includes("ANALYTICS")
+      ) {
+        return "it@nexurasolution.com";
+      }
+
+      // Default to info email
+      return "info@nexurasolution.com";
+    };
+
+    const recipientEmail = getRecipientEmail(service || "");
+
+    // Create transporter for Hostinger
     const transporter = nodemailer.createTransport({
-      service: "gmail", // You can change this to your email provider
+      host: "smtp.hostinger.com",
+      port: 465,
+      secure: true, // use SSL
       auth: {
-        user: process.env.EMAIL_USER, // Your email address
-        pass: process.env.EMAIL_PASS, // Your email app password
+        user: "info@nexurasolution.com", // Your Hostinger email address
+        pass: "?Info123", // Your Hostinger email password
       },
     });
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.COMPANY_EMAIL || process.env.EMAIL_USER, // Company email
+      from: "info@nexurasolution.com",
+      to: recipientEmail, // Dynamic recipient based on service
       subject: `New Contact Form Submission - ${service || "General Inquiry"}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

@@ -45,14 +45,11 @@ export default function AboutUs() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
             Powering Your{" "}
-            <span className="text-primary neon-text">Marketplace Success</span>
+            <span className="text-primary neon-text"> IT & E-Commerce Journey</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Founded by ecommerce entrepreneurs who built and scaled their own
-            multi-million dollar marketplace businesses, Nexura specializes in
-            helping brands dominate Amazon, Walmart, eBay, and TikTok Shop. We
-            combine deep marketplace expertise with cutting-edge technology to
-            transform your products into profitable, scalable online businesses.
+           At Nexura, we provide complete IT and e-commerce solutions to help clients start, manage, and grow in the digital world.
+Whether you want to set up and run your Amazon, Walmart, or TikTok Shop account, or need web development, software, and other IT services, our goal is to make your online journey smooth, smart, and successful.
           </p>
         </motion.div>
 

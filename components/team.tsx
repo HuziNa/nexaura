@@ -13,27 +13,26 @@ export default function Team() {
   ];
   const teamMembers = [
     {
-      name: "Ihsan",
-      role: "Director Ecommerce",
-      image: "/ihsan.jpeg",
-    },
-    {
       name: "Jawad",
       role: "Co-Founder",
-      image: "/jawad hashmi.jpeg",
+      image: "/jh.jpeg",
+      
     },
     {
       name: "Ammar",
       role: "Co-Founder ",
       image: "/ai-engineer-headshot.png",
-      
+    },
+    {      
+      name: "Ihsan",
+      role: "Director Ecommerce",
+      image: "/ihsan.jpeg",
     },
     {
       name: "Usman",
       role: "Director IT",
-      image: "/usman kocha.jpeg",
+      image: "/us.jpeg",
     },
-    
   ];
 
   return (
@@ -50,8 +49,8 @@ export default function Team() {
             Meet the <span className="text-primary neon-text">Innovators</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our diverse team of experts brings together decades of experience in
-            cutting-edge technologies, united by a passion for creating
+            Our diverse team of experts brings together passion and experience
+            in cutting-edge technologies, united by a passion for creating
             exceptional digital solutions.
           </p>
         </motion.div>
@@ -82,22 +81,7 @@ export default function Team() {
                     } shadow-[0_0_0_3px_hsl(var(--background))]`}
                   >
                     <div className="rounded-full bg-background p-[2px]">
-                      {(() => {
-                        // Determine columns responsively (1, 2, or 3)
-                        const [cols, setCols] = (function useCols() {
-                          // Inline hook pattern to avoid moving a lot of code; evaluated per render
-                          // but React hooks must be top-level; instead, we'll compute outside below.
-                          return [1, () => {}] as const;
-                        })();
-                        return null;
-                      })()}
-                      {/* The actual image element is rendered below using computed values */}
-                      <TeamAvatar
-                        index={index}
-                        total={teamMembers.length}
-                        src={member.image}
-                        alt={member.name}
-                      />
+                      <TeamAvatar src={member.image} alt={member.name} />
                     </div>
                     {/* ring highlight */}
                     <div className="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -123,32 +107,14 @@ export default function Team() {
   );
 }
 
-type AvatarProps = { index: number; total: number; src?: string; alt: string };
+type AvatarProps = { src?: string; alt: string };
 
-function TeamAvatar({ index, total, src, alt }: AvatarProps) {
-  // Determine how many columns are currently active to identify the bottom row
-  const [cols, setCols] = useState(1);
-
-  useEffect(() => {
-    const compute = () => {
-      if (typeof window === "undefined") return;
-      const lg = window.matchMedia("(min-width: 1024px)").matches;
-      const md = window.matchMedia("(min-width: 768px)").matches;
-      setCols(lg ? 3 : md ? 2 : 1);
-    };
-    compute();
-    window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
-  }, []);
-
-  const bottomRowStart = Math.max(0, total - cols);
-  const isBottomRow = index >= bottomRowStart;
+function TeamAvatar({ src, alt }: AvatarProps) {
   const placeholder = "/avatar-placeholder.svg";
-  const srcToUse = isBottomRow ? placeholder : src || placeholder;
 
   return (
     <img
-      src={srcToUse}
+      src={src || placeholder}
       alt={alt}
       className="w-40 h-40 md:w-44 md:h-44 rounded-full object-cover shadow-lg"
       onError={(e) => {

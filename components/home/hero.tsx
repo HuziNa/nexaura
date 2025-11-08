@@ -18,7 +18,7 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative overflow-hidden min-h-screen flex flex-col w-full max-w-full">
+      <section className="relative overflow-hidden h-screen flex flex-col w-full max-w-full">
         {/* Sophisticated Professional Tech Background */}
         <div className="absolute inset-0 z-0">
           {/* Elegant Grid System */}
@@ -273,30 +273,50 @@ export default function Hero() {
           ></div>
         </div>
 
-        <div className="container mx-auto px-4 py-24 sm:py-32 relative z-10 flex-1 flex flex-col max-w-full overflow-x-hidden">
-          <div className="mx-auto max-w-4xl text-center flex-1 flex flex-col justify-center w-full">
+        <div className="container mx-auto px-4 relative z-10 flex-1 flex flex-col max-w-full overflow-x-hidden justify-center items-center">
+          <div className="mx-auto max-w-6xl text-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-8 flex flex-col items-center justify-center"
+              className="flex flex-col items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12"
             >
-              <div className="relative flex items-center justify-center mb-4">
-                <img
-                  src="/nexura-removebg-preview.png"
-                  alt="Nexura N Logo"
-                  className="w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 animate-float-slow drop-shadow-xl select-none pointer-events-none"
+              {/* Ultra-cool tech N with circuit aesthetic */}
+              <div className="relative">
+                {/* Multi-layer glow effect - toned down */}
+                <div className="absolute inset-0 blur-[80px] opacity-20 bg-primary/30 animate-pulse"></div>
+
+                <div
+                  className="relative text-[8rem] sm:text-[10rem] md:text-[14rem] lg:text-[18rem] leading-none select-none tracking-tighter text-primary"
                   style={{
-                    filter: "drop-shadow(0 8px 32px rgba(0,212,255,0.18))",
+                    fontFamily:
+                      "'Inter', 'Roboto', 'Helvetica Neue', sans-serif",
+                    fontWeight: 900,
+                    textShadow:
+                      "0 0 20px rgba(0, 212, 255, 0.4), 0 0 40px rgba(0, 212, 255, 0.2)",
+                    filter:
+                      "drop-shadow(0 4px 16px rgba(0, 212, 255, 0.3)) drop-shadow(0 0 12px rgba(0, 212, 255, 0.4))",
+                    letterSpacing: "-0.05em",
                   }}
-                />
+                >
+                  N
+                </div>
+
+                {/* Subtle scan line effect */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-15"
+                  style={{
+                    background:
+                      "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.08) 2px, rgba(0, 212, 255, 0.08) 4px)",
+                  }}
+                ></div>
               </div>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-primary neon-text mb-2">
+
+              {/* Tagline */}
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide text-primary neon-text">
                 One Nexus. Endless Solutions
               </div>
             </motion.div>
-
-           
           </div>
         </div>
       </section>
