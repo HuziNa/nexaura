@@ -133,6 +133,8 @@ export default function Services() {
     },
   ];
 
+  const [selected, setSelected] = useState<number>(0);
+
   return (
     <section className="pb-24 relative">
       <div className="container mx-auto px-4">
@@ -154,52 +156,86 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              ref={(el) => {
-                // store the wrapper element for height calculation
-                if (!cardRefs.current) return;
-                cardRefs.current[index] = el as HTMLDivElement | null;
-              }}
-              style={{ height: equalHeight ?? "auto" }}
-              className="flex"
-            >
-              <Card className="h-full w-full neon-border bg-card/50 backdrop-blur-sm hover:neon-glow transition-all duration-300 group flex flex-col">
-                <CardHeader className="pb-4">
-                  <div
-                    className={`w-12 h-12 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center text-black mb-3 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {service.icon}
-                  </div>
-                  <CardTitle className="text-lg text-foreground">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 pt-0 flex flex-col flex-grow">
-                  <p className="text-muted-foreground text-sm">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-1.5 flex-grow">
-                    {service.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center text-xs text-muted-foreground"
+        {/* Tabular layout: left vertical nav, right detail */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Left nav */}
+          <div className="md:col-span-4 flex">
+            <div className="bg-card/50 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden relative neon-border w-full">
+              <ul className="divide-y divide-border">
+                {services.map((service, idx) => {
+                  const active = idx === selected;
+                  return (
+                    <li key={service.slug} className="relative">
+                      <button
+                        onClick={() => setSelected(idx)}
+                        className={
+                          `w-full text-left px-6 py-4 flex items-center gap-4 transition-colors duration-200 focus:outline-none ` +
+                          (active ? "bg-primary/10" : "hover:bg-primary/5")
+                        }
                       >
-                        <div className="w-1 h-1 bg-primary rounded-full mr-2 flex-shrink-0"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+                        <span
+                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                            active
+                              ? "text-black bg-primary scale-110"
+                              : "text-primary bg-primary/10"
+                          }`}
+                        >
+                          {service.icon}
+                        </span>
+                        <span
+                          className={`font-semibold ${
+                            active ? "text-primary" : "text-foreground"
+                          }`}
+                        >
+                          {service.title}
+                        </span>
+                      </button>
+                      {/* floating accent for active item (small notch) */}
+                      {active && (
+                        <div className="absolute -right-0.5 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-l-lg shadow-md" />
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right content */}
+          <div className="md:col-span-8 flex">
+            <motion.div
+              key={services[selected].slug}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.45 }}
+              className="bg-card/50 backdrop-blur-sm rounded-lg shadow-lg p-8 w-full neon-border"
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    {services[selected].title}
+                  </h3>
+                  <p className="text-muted-foreground mt-3 max-w-2xl">
+                    {services[selected].description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h4 className="font-semibold text-sm text-foreground/90 mb-3">
+                  Business Benefits of Choosing Us
+                </h4>
+                <ul className="space-y-3 list-none ml-0">
+                  {services[selected].features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-sm text-muted-foreground">{f}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
