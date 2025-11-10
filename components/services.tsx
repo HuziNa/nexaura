@@ -9,6 +9,10 @@ import {
   Settings,
   Truck,
   BarChart3,
+  Cloud,
+  Globe,
+  Smartphone,
+  AreaChart,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -128,6 +132,62 @@ export default function Services() {
         "ROI tracking",
         "Market expansion (cross-platform)",
         "Automation services for scaling",
+      ],
+      color: "from-accent to-primary",
+    },
+    {
+      icon: <Cloud className="h-8 w-8" />,
+      title: "Cloud Solutions",
+      slug: "cloud-solutions",
+      description:
+        "Leverage the power of the cloud with our scalable and secure infrastructure solutions.",
+      features: [
+        "Cloud migration and deployment (AWS, Azure, GCP)",
+        "Serverless architecture and microservices",
+        "DevOps and CI/CD pipeline implementation",
+        "Cloud security and compliance",
+      ],
+      color: "from-primary to-accent",
+    },
+    {
+      icon: <Globe className="h-8 w-8" />,
+      title: "Web Development",
+      slug: "web-development",
+      description:
+        "Create stunning, high-performance websites and web applications that drive user engagement.",
+      features: [
+        "Custom front-end and back-end development",
+        "E-commerce and marketplace solutions",
+        "Content Management Systems (CMS)",
+        "Progressive Web Apps (PWA)",
+      ],
+      color: "from-accent to-primary",
+    },
+    {
+      icon: <Smartphone className="h-8 w-8" />,
+      title: "Mobile App Development",
+      slug: "mobile-app-development",
+      description:
+        "Build native and cross-platform mobile applications for iOS and Android.",
+      features: [
+        "Native iOS (Swift) and Android (Kotlin) development",
+        "Cross-platform development (React Native, Flutter)",
+        "UI/UX design for mobile",
+        "App store submission and maintenance",
+      ],
+      color: "from-primary to-accent",
+    },
+    {
+      icon: <AreaChart className="h-8 w-8" />,
+      title: "Analytics & Reporting",
+      slug: "analytics-reporting",
+      description:
+        "Turn data into actionable insights with our advanced analytics and reporting services.",
+      features: [
+        "Business intelligence and data visualization",
+        "Predictive analytics and machine learning models",
+        "Data warehousing and ETL pipelines",
+        "Custom dashboards and reporting solutions",
       ],
       color: "from-accent to-primary",
     },
