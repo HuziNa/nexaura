@@ -1,4 +1,3 @@
-
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -25,7 +24,6 @@ export default function Home() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -39,11 +37,7 @@ export default function Home() {
         const elementPosition =
           element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     }, 100);
   };
@@ -56,6 +50,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative bg-black overflow-x-hidden">
+      {/* Background floating elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl floating-element"></div>
         <div
@@ -79,20 +74,14 @@ export default function Home() {
         />
       </div>
 
+      {/* Desktop Header */}
       <header
         className={`fixed top-4 z-[99999] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full bg-background/80 md:flex backdrop-blur-sm neon-border shadow-lg transition-all duration-300 ${
           isScrolled ? "max-w-4xl px-2" : "max-w-6xl px-4"
         } py-2 left-1/2 transform -translate-x-1/2`}
       >
-        <a
-          className={`z-50 flex items-center justify-center gap-2 transition-all duration-300 ${
-            isScrolled ? "ml-4" : ""
-          }`}
-          href="#"
-        >
-          <div className="text-primary font-bold text-2xl neon-text">
-            NEXURA
-          </div>
+        <a className={`z-50 flex items-center justify-center gap-2`} href="#">
+          <div className="text-primary font-bold text-2xl neon-text">NEXURA</div>
         </a>
 
         <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-muted-foreground transition duration-200 hover:text-foreground md:flex md:space-x-2">
@@ -108,11 +97,7 @@ export default function Home() {
                   const elementPosition =
                     element.getBoundingClientRect().top + window.pageYOffset;
                   const offsetPosition = elementPosition - headerOffset;
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth",
-                  });
+                  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                 }
               }}
             >
@@ -131,11 +116,7 @@ export default function Home() {
                 const elementPosition =
                   element.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: "smooth",
-                });
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
               }
             }}
             className="rounded-md font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center bg-gradient-to-r from-primary to-accent text-black neon-glow px-4 py-2 text-sm"
@@ -145,11 +126,11 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Mobile Header */}
       <header className="fixed top-4 z-[99999] left-4 right-4 flex flex-row items-center justify-between rounded-full bg-background/80 backdrop-blur-sm neon-border shadow-lg md:hidden px-4 py-3">
         <a className="flex items-center justify-center gap-2" href="#">
           <div className="text-primary font-bold text-xl neon-text">NEXURA</div>
         </a>
-
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="flex items-center justify-center w-10 h-10 rounded-full bg-background/50 neon-border transition-colors hover:bg-background/80"
@@ -204,26 +185,64 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
+      {/* Nexura GPT Button */}
+      <div id="nexura-gpt-button-container" className="flex justify-center mt-8">
+        <button
+          id="ask-nexura-gpt"
+          className="px-8 py-3 rounded-full bg-cyan-400 text-black font-bold text-lg shadow-neon hover:shadow-neon-lg transition-all duration-300 flex items-center gap-2"
+        >
+          ✨ ASK NEXURA GPT
+        </button>
+      </div>
+
+      {/* Nexura GPT Popup */}
+      <div
+        id="nexura-gpt-popup"
+        className="fixed bottom-6 right-6 w-96 h-[500px] bg-black border-2 border-cyan-400 rounded-xl shadow-neon hidden flex-col"
+      >
+        <div className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold p-3 rounded-t-xl flex justify-between items-center">
+          🌐 NEXURA GPT
+          <button
+            id="close-nexura-gpt"
+            className="text-black font-bold hover:text-white"
+          >
+            ✖
+          </button>
+        </div>
+        <div
+          id="nexura-gpt-messages"
+          className="flex-1 p-3 overflow-y-auto text-white"
+        >
+          Hello! How can I help you?
+        </div>
+        <div className="flex p-3 gap-2">
+          <input
+            id="nexura-gpt-input"
+            type="text"
+            placeholder="Type your question..."
+            className="flex-1 p-2 rounded-lg bg-gray-900 text-white outline-none"
+          />
+          <button
+            id="nexura-gpt-send"
+            className="bg-cyan-400 px-4 py-2 rounded-lg font-bold text-black"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+
+      {/* About, Services, Team Sections */}
       <div id="about">
         <AboutUs />
       </div>
-
       <div id="services">
         <Services />
       </div>
-
       <div id="team">
         <Team />
       </div>
 
-      {/* <div id="projects">
-        <Projects />
-      </div> */}
-
-      {/* <div id="reviews">
-        <Reviews />
-      </div> */}
-
+      {/* Contact Section */}
       <div id="contact">
         <Contact />
       </div>
@@ -240,6 +259,19 @@ export default function Home() {
           <FaWhatsapp className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" />
         </Link>
       </div>
+
+      {/* GPT Button Script */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            const btn = document.getElementById('ask-nexura-gpt');
+            const popup = document.getElementById('nexura-gpt-popup');
+            const closeBtn = document.getElementById('close-nexura-gpt');
+            btn.addEventListener('click', () => popup.classList.remove('hidden'));
+            closeBtn.addEventListener('click', () => popup.classList.add('hidden'));
+          `,
+        }}
+      />
     </div>
   );
 }
